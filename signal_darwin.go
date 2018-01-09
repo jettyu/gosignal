@@ -1,10 +1,10 @@
-//+build linux
-
 package gosignal
 
 import (
 	"syscall"
 )
+
+//+build darwin
 
 func init() {
 	SIGUSR1 = syscall.SIGUSR1
