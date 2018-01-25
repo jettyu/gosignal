@@ -31,8 +31,8 @@ func NewSignalHandler() SignalHandler {
 	}
 }
 
-// Listen ...
-func (p SignalHandler) Listen(pidfile ...string) {
+// Serve ...
+func (p SignalHandler) Serve(pidfile ...string) {
 	CURPID = os.Getpid()
 	file := "pid"
 	if len(pidfile) > 0 {
@@ -64,7 +64,7 @@ func Signal(sig int, callback func()) {
 	signalHandler.Signal(sig, callback)
 }
 
-// Listen ...
-func Listen(pidfile ...string) {
-	signalHandler.Listen(pidfile...)
+// Serve ...
+func Serve(pidfile ...string) {
+	signalHandler.Serve(pidfile...)
 }
