@@ -33,12 +33,11 @@ func NewSignalHandler() SignalHandler {
 
 // Serve ...
 func (p SignalHandler) Serve(pidfile ...string) {
-	CURPID = os.Getpid()
-	file := "pid"
 	if len(pidfile) > 0 {
-		file = pidfile[0]
+		file := pidfile[0]
+		CURPID = os.Getpid()
+		ioutil.WriteFile(file, []byte(fmt.Sprint(CURPID)), os.ModePerm)
 	}
-	ioutil.WriteFile(file, []byte(fmt.Sprint(CURPID)), os.ModePerm)
 	for k := range p.signalMap {
 		signal.Notify(p.signals, k)
 	}
