@@ -1,4 +1,4 @@
-//+build drwin
+//+build windows
 
 package gosignal
 
